@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/base16/dracula.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+        
+        body {
+            background-color: #081425;
+            color: #d8e3fb;
+            overflow-x: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: #5de6ff;
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .grid-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(30, 41, 59, 0.3) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .connection-line {
+            background: linear-gradient(90deg, #bec6e0 0%, #5de6ff 100%);
+            height: 1px;
+            opacity: 0.3;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #081425; }
+        ::-webkit-scrollbar-thumb { background: #1f2a3c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2a3548; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#bec6e0",
+                      "inverse-surface": "#d8e3fb",
+                      "surface-container-high": "#1f2a3c",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#263143",
+                      "on-surface": "#d8e3fb",
+                      "tertiary-fixed-dim": "#b9c8de",
+                      "surface-container": "#152031",
+                      "secondary-fixed": "#a2eeff",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-bright": "#2f3a4c",
+                      "surface": "#081425",
+                      "secondary-fixed-dim": "#2fd9f4",
+                      "tertiary-fixed": "#d4e4fa",
+                      "surface-dim": "#081425",
+                      "surface-container-low": "#111c2d",
+                      "background": "#081425",
+                      "on-error": "#690005",
+                      "tertiary-container": "#081828",
+                      "outline": "#909097",
+                      "on-secondary": "#00363e",
+                      "on-primary-container": "#798098",
+                      "on-tertiary-fixed": "#0d1c2d",
+                      "primary": "#bec6e0",
+                      "on-surface-variant": "#c6c6cd",
+                      "outline-variant": "#45464d",
+                      "surface-tint": "#bec6e0",
+                      "on-background": "#d8e3fb",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#040e1f",
+                      "primary-container": "#0f172a",
+                      "tertiary": "#b9c8de",
+                      "on-tertiary-fixed-variant": "#39485a",
+                      "surface-container-highest": "#2a3548",
+                      "on-primary": "#283044",
+                      "surface-variant": "#2a3548",
+                      "on-secondary-fixed": "#001f25",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-secondary-container": "#00515d",
+                      "secondary-container": "#00cbe6",
+                      "on-tertiary-container": "#738296",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "inverse-primary": "#565e74",
+                      "secondary": "#5de6ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-tertiary": "#233143"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "margin-desktop": "64px",
+                      "lg": "24px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Geist"],
+                      "display": ["Geist"],
+                      "headline-lg": ["Geist"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "code-sm": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary/30">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 flex justify-between items-center h-16 px-margin-desktop max-w-full mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">DataNexus</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-body-md text-body-md" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#comparativo">Comparativo</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#tendencias">Tendências</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Documentação</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden lg:block text-on-surface-variant font-medium px-md py-sm hover:text-secondary transition-all">Login</button>
+<button class="bg-secondary text-on-secondary px-lg py-sm font-bold rounded-lg hover:brightness-110 active:opacity-80 transition-all">Get Started</button>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center grid-bg overflow-hidden px-margin-mobile md:px-margin-desktop">
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px]"></div>
+</div>
+<div class="relative z-10 max-w-4xl">
+<div class="inline-flex items-center gap-sm bg-surface-container-low border border-outline-variant/30 px-md py-xs rounded-full mb-lg">
+<span class="material-symbols-outlined text-secondary text-[18px]">terminal</span>
+<span class="font-label-md text-code-sm text-secondary tracking-widest uppercase">System Operational_</span>
+</div>
+<h1 class="font-display text-display mb-md leading-none text-white">O Coração da Infraestrutura Moderna</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-xl">
+                    Provisionamento instantâneo, redundância multi-região e consistência ACID total. Construímos a fundação onde o processamento de dados em tempo real encontra a segurança inabalável.
+                </p>
+<div class="flex flex-wrap gap-md">
+<button class="px-xl py-md bg-secondary text-on-secondary font-bold rounded-lg flex items-center gap-md group">
+                        Deploy Database
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="px-xl py-md border border-outline-variant text-on-surface font-bold rounded-lg hover:bg-surface-variant/30 transition-all">
+                        Technical Specs
+                    </button>
+</div>
+</div>
+<!-- Abstract UI Decoration -->
+<div class="hidden lg:block absolute right-margin-desktop top-1/2 -translate-y-1/2 w-1/3">
+<div class="glass-card p-lg rounded-xl relative overflow-hidden">
+<div class="flex justify-between items-center mb-md">
+<span class="font-label-md text-code-sm text-secondary">METRICS_STREAM</span>
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</div>
+<div class="space-y-md">
+<div class="h-12 bg-surface-container rounded flex items-end gap-xs p-xs">
+<div class="bg-secondary/40 w-full h-[60%]"></div>
+<div class="bg-secondary/60 w-full h-[80%]"></div>
+<div class="bg-secondary/80 w-full h-[100%]"></div>
+<div class="bg-secondary/50 w-full h-[40%]"></div>
+<div class="bg-secondary/70 w-full h-[70%]"></div>
+</div>
+<div class="font-label-md text-code-sm text-on-surface-variant opacity-60">
+                            Latency: 0.12ms | Queries/sec: 4.2k
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Crucial Role & Metrics Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-md">Papel Crucial dos Dados</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                        Em um ecossistema orientado por Inteligência Artificial, a latência do dado é o novo downtime. Nossa infraestrutura permite que modelos de ML acessem vetores e registros estruturados com consistência atômica, eliminando silos informacionais.
+                    </p>
+<div class="grid grid-cols-2 gap-md">
+<div class="glass-card p-md rounded-lg">
+<div class="font-display text-headline-lg text-secondary mb-xs">99.999%</div>
+<div class="font-label-md text-code-sm text-on-surface-variant uppercase tracking-tighter">Uptime Garantido</div>
+</div>
+<div class="glass-card p-md rounded-lg">
+<div class="font-display text-headline-lg text-secondary mb-xs">&lt; 10ms</div>
+<div class="font-label-md text-code-sm text-on-surface-variant uppercase tracking-tighter">P99 Latency</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<img alt="Server Farm Infrastructure" class="rounded-xl border border-outline-variant shadow-2xl" data-alt="A macro cinematic shot of a futuristic data center server rack glowing with intense cyan and deep navy LED lights. The environment is dark and technical with visible cooling fans and high-precision cable management. The scene evokes extreme performance and digital infrastructure stability, following a technical minimalist aesthetic with sharp focus and cinematic depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAaVy9X0EHBzaIXcjiENYHrQkrtY1-IsMN8PlQT49GttkPIN3JmOSV35BVtiTNe_3Thq9MdzeqnhCS9RnN7lQeMUqt2hek-qJw01U39UL1T3nyIlGbDyCr4dpEzwDDU6bI4prhXdHgpSdyxmqmPWtTDLhp_u6X1cioCfKTUWJx4DcNL18mLQxt7xFSO07pEsTeo4HPmkW9loCGAs-drgsbbYXgk64nbrh81LPnirtFC0lBUXmEWFX_tCf2fabuL_rNy-g8tSNS1UA"/>
+</div>
+</div>
+</section>
+<!-- Comparative Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop grid-bg" id="comparativo">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-md">PostgreSQL vs MySQL: A Batalha dos Gigantes</h2>
+<p class="text-on-surface-variant">Análise técnica profunda para arquitetos que não aceitam compromissos.</p>
+</div>
+<div class="overflow-x-auto mb-xl">
+<table class="w-full border-collapse glass-card rounded-xl overflow-hidden">
+<thead>
+<tr class="bg-surface-container-high text-left">
+<th class="p-md font-label-md text-code-sm uppercase text-on-surface-variant">Recurso</th>
+<th class="p-md font-label-md text-code-sm uppercase text-secondary">PostgreSQL</th>
+<th class="p-md font-label-md text-code-sm uppercase text-primary">MySQL</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr>
+<td class="p-md font-bold">Performance</td>
+<td class="p-md text-on-surface-variant">Superior em queries complexas/escrita</td>
+<td class="p-md text-on-surface-variant">Otimizado para leitura massiva</td>
+</tr>
+<tr>
+<td class="p-md font-bold">Escalabilidade</td>
+<td class="p-md text-on-surface-variant">Extensível via plugins (Timescale, PostGIS)</td>
+<td class="p-md text-on-surface-variant">Fácil replicação e sharding nativo</td>
+</tr>
+<tr>
+<td class="p-md font-bold">Suporte a JSON</td>
+<td class="p-md text-on-surface-variant">Nativo com JSONB e indexação GIN</td>
+<td class="p-md text-on-surface-variant">Suporte básico a tipos JSON</td>
+</tr>
+<tr>
+<td class="p-md font-bold">Conformidade ACID</td>
+<td class="p-md text-on-surface-variant">Total e rigorosa por padrão</td>
+<td class="p-md text-on-surface-variant">Dependente do Storage Engine (InnoDB)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="glass-card p-xl rounded-xl border-t-2 border-t-secondary">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md">PostgreSQL: A Escolha dos Especialistas</h3>
+</div>
+<ul class="space-y-md text-on-surface-variant">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-md">check_circle</span>
+                            Arquitetura de processos robusta para isolamento total de falhas.
+                        </li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-md">check_circle</span>
+                            Extensibilidade infinita para novos tipos de dados e funções.
+                        </li>
+</ul>
+</div>
+<div class="glass-card p-xl rounded-xl border-t-2 border-t-primary">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">settings_input_component</span>
+</div>
+<h3 class="font-headline-md text-headline-md">MySQL: O Motor que Move a Web</h3>
+</div>
+<ul class="space-y-md text-on-surface-variant">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-md">flash_on</span>
+                            Velocidade inigualável para aplicações CMS e blogs globais.
+                        </li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-md">flash_on</span>
+                            Ecossistema massivo de ferramentas e suporte gerenciado.
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Trends Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="tendencias">
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-md">A Fronteira dos Dados: Tendências que Moldam o Amanhã</h2>
+<div class="connection-line w-32 mb-xl"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-xl">
+<!-- Vector DBs -->
+<div class="glass-card p-lg rounded-xl flex flex-col gap-md">
+<div class="font-label-md text-secondary text-code-sm">EMERGING_TECH</div>
+<h3 class="font-headline-md text-headline-md">Bancos de Dados Vetoriais</h3>
+<p class="text-on-surface-variant flex-grow">A espinha dorsal das LLMs. Armazene e busque embeddings com similaridade de cosseno em milissegundos.</p>
+<div class="flex items-center gap-sm mt-md">
+<span class="px-sm py-xs bg-surface-container-high rounded text-code-sm font-label-md">PINECOVE</span>
+<span class="px-sm py-xs bg-surface-container-high rounded text-code-sm font-label-md">MILVUS</span>
+</div>
+</div>
+<!-- Serverless -->
+<div class="glass-card p-lg rounded-xl flex flex-col gap-md">
+<div class="font-label-md text-secondary text-code-sm">INFRASTRUCTURE_EVOLUTION</div>
+<h3 class="font-headline-md text-headline-md">Revolução Serverless</h3>
+<p class="text-on-surface-variant flex-grow">Pague apenas pelo que processa. Escalonamento automático de zero a milhões de conexões sem gerenciar instâncias.</p>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-2/3"></div>
+</div>
+</div>
+<!-- SQL vs NoSQL -->
+<div class="glass-card p-lg rounded-xl flex flex-col gap-md">
+<div class="font-label-md text-secondary text-code-sm">DATA_MODELING</div>
+<h3 class="font-headline-md text-headline-md">A Convergência SQL vs NoSQL</h3>
+<p class="text-on-surface-variant flex-grow">O fim da dicotomia. Bancos modernos oferecem flexibilidade de documento com a integridade do esquema relacional.</p>
+<div class="connection-line w-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-md">
+<div class="p-md border border-outline-variant/30 rounded-lg bg-surface-container-lowest flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">layers</span>
+<div>
+<div class="font-bold text-on-surface">HTAP Architecture</div>
+<div class="text-code-sm opacity-60">Hybrid Transactional/Analytical</div>
+</div>
+</div>
+<div class="p-md border border-outline-variant/30 rounded-lg bg-surface-container-lowest flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">security</span>
+<div>
+<div class="font-bold text-on-surface">Zero Trust Data</div>
+<div class="text-code-sm opacity-60">End-to-End Encryption</div>
+</div>
+</div>
+<div class="p-md border border-outline-variant/30 rounded-lg bg-surface-container-lowest flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">router</span>
+<div>
+<div class="font-bold text-on-surface">Edge Persistence</div>
+<div class="text-code-sm opacity-60">Global Low-Latency State</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+<div class="glass-card p-xl rounded-2xl max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-xl relative z-10">
+<div class="flex-1">
+<h2 class="font-headline-lg text-headline-lg mb-sm">Mantenha-se Atualizado</h2>
+<p class="text-on-surface-variant">Receba as últimas tendências em infraestrutura e bancos de dados diretamente no seu inbox.</p>
+</div>
+<div class="w-full md:w-1/2">
+<form class="flex gap-sm">
+<input class="flex-grow bg-surface-container border border-outline-variant rounded-lg px-md py-md focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/40" placeholder="dev@empresa.com" type="email"/>
+<button class="bg-secondary text-on-secondary px-lg py-md font-bold rounded-lg whitespace-nowrap hover:brightness-110 active:scale-95 transition-all">Assinar</button>
+</form>
+<p class="text-code-sm text-on-surface-variant mt-sm opacity-50">Sem spam. Apenas bits técnicos relevantes.</p>
+</div>
+</div>
+<!-- Abstract background shape -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-gradient-to-r from-secondary/5 via-primary/5 to-secondary/5 rotate-6 pointer-events-none"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl border-t border-outline-variant/20 bg-surface-container-lowest dark:bg-surface-container-lowest px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">DataNexus</div>
+<p class="text-on-surface-variant font-body-md text-body-md text-center md:text-left">© 2024 DataNexus Infrastructure. Precision in Data.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">API Status</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Global Network</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Enterprise Solutions</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions and subtle effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header background opacity transition
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-surface/95');
+                nav.classList.remove('bg-surface/80');
+            } else {
+                nav.classList.add('bg-surface/80');
+                nav.classList.remove('bg-surface/95');
+            }
+        });
+    </script>
+</body></html>
